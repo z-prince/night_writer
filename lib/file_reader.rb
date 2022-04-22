@@ -2,7 +2,7 @@ class FileReader
   attr_accessor :in_file_path
 
   def initialize
-    @in_file_path = File.new(ARGV[0], 'r')
+    @in_file_path = File.open(ARGV[0], 'r')
   end
 
   def read
