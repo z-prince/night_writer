@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative '../lib/file_reader'
+# require_relative '../lib/io'
 
 RSpec.describe FileReader do
   describe 'object' do
@@ -9,13 +10,15 @@ RSpec.describe FileReader do
     end
   end
 
-  describe 'behaviors' do
+  describe 'IO' do
     before :each do
-      @file_reader = FileReader.new
+      @file_reader = FileReader.new # (ARGV)
+      # ARGV.replace('/message.txt')
     end
-
     it 'can read files' do
-      expect(@file_reader.read).to eq 'sphinx of black quartz judge my vow'
+      @file_reader.in_file_path = File.open('message.txt', 'r')
+
+      expect(@file_reader.read).to eq "sphinx of black quartz judge my vow\n"
     end
   end
 end
