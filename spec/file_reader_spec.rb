@@ -12,8 +12,7 @@ RSpec.describe FileReader do
 
   describe 'IO' do
     before :each do
-      @file_reader = FileReader.new # (ARGV)
-      # ARGV.replace('/message.txt')
+      @file_reader = FileReader.new
     end
     it 'can read files' do
       @file_reader.in_file_path = File.open('message.txt', 'r')
