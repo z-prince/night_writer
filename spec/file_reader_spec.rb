@@ -1,5 +1,7 @@
 require 'rspec'
 require_relative '../lib/file_reader'
+require 'simplecov'
+SimpleCov.start
 # require_relative '../lib/io'
 
 RSpec.describe FileReader do
@@ -12,8 +14,7 @@ RSpec.describe FileReader do
 
   describe 'IO' do
     before :each do
-      @file_reader = FileReader.new # (ARGV)
-      # ARGV.replace('/message.txt')
+      @file_reader = FileReader.new
     end
     it 'can read files' do
       @file_reader.in_file_path = File.open('message.txt', 'r')
