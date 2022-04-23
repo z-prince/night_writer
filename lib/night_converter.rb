@@ -1,6 +1,6 @@
 require_relative 'night_mother'
-require_relative 'file_reader'
+require_relative 'night_reader'
 
 class NightConverter < NightMother
-  include FileReader
+  include NightReader
 end
