@@ -3,7 +3,7 @@ class NightMother
 
   def initialize
     @in_file_path = File.open(ARGV[0], 'r')
-    # @out_file_path = File.open(ARGV[1], 'w')
+    # @out_file_path = File.open('log.txt', 'w') do { |f|
     @dictionary = {
       a: '●     ',
       b: '● ●   ',
