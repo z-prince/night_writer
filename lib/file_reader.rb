@@ -1,6 +1,6 @@
 require_relative 'night_mother'
 
-class FileReader < NightMother
+module FileReader
   def read
     read_file = @in_file_path.read
     @in_file_path.close
