@@ -17,4 +17,11 @@ RSpec.describe NightConverter do
       expect(@night_converter.in_file_path).to be_an_instance_of(File)
     end
   end
+
+  describe 'english to braille' do
+    it 'converts english to braille' do
+      night_converter = NightConverter.new
+      night_converter.in_file_path = File.open('message.txt', 'r')
+    end
+  end
 end
