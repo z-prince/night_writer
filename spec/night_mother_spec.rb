@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative '../lib/night_mother'
 require 'simplecov'
-SimpleCov.start
+# SimpleCov.start
 
 RSpec.describe NightMother do
   describe 'object' do

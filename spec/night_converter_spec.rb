@@ -21,7 +21,8 @@ RSpec.describe NightConverter do
   describe 'english to braille' do
     it 'converts english to braille' do
       night_converter = NightConverter.new
-      night_converter.in_file_path = File.open('message.txt', 'r')
+      english = 'sphinx of black quartz judge my vow'
+      expect(night_converter.convert(english)).to eq ''
     end
   end
 end

@@ -1,3 +1,6 @@
 module NightWriter
-  def write; end
+  # def write(new_file)
+  #   @out_file_path.write(new_file)
+  #   @out_file_path.close
+  # end
 end
