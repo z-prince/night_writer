@@ -1,1 +1,2 @@
-
+class NightConverter
+end
