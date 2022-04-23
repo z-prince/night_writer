@@ -8,4 +8,13 @@ RSpec.describe NightConverter do
       expect(night_converter).to be_an_instance_of(NightConverter)
     end
   end
+  describe 'Inheritance' do
+    before :each do
+      @night_converter = NightConverter.new
+    end
+
+    it 'inherits NightMother class' do
+      expect(@night_converter.in_file_path).to be_an_instance_of(File)
+    end
+  end
 end

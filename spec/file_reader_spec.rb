@@ -1,25 +1,25 @@
 require 'rspec'
-require_relative '../lib/file_reader'
+require_relative '../lib/night_converter'
 require 'simplecov'
 SimpleCov.start
 # require_relative '../lib/io'
 
-RSpec.describe FileReader do
+RSpec.describe NightConverter do
   describe 'object' do
     it 'exists' do
-      file_reader = FileReader.new
-      expect(file_reader).to be_an_instance_of FileReader
+      night_converter = NightConverter.new
+      expect(night_converter).to be_an_instance_of NightConverter
     end
   end
 
   describe 'IO' do
     before :each do
-      @file_reader = FileReader.new
+      @night_converter = NightConverter.new
     end
     it 'can read files' do
-      @file_reader.in_file_path = File.open('message.txt', 'r')
+      @night_converter.in_file_path = File.open('message.txt', 'r')
 
-      expect(@file_reader.read).to eq "sphinx of black quartz judge my vow\n"
+      expect(@night_converter.read).to eq "sphinx of black quartz judge my vow\n"
     end
   end
 end
