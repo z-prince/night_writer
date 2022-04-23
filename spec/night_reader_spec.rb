@@ -10,7 +10,7 @@ RSpec.describe NightConverter do
       @night_converter = NightConverter.new
     end
     it 'can read files' do
-      @night_converter.in_file_path = File.open('message.txt', 'r')
+      @night_converter.in_file_path = File.open('test_message.txt', 'r')
 
       expect(@night_converter.read).to eq "sphinx of black quartz judge my vow\n"
     end
