@@ -5,13 +5,6 @@ SimpleCov.start
 # require_relative '../lib/io'
 
 RSpec.describe NightConverter do
-  describe 'object' do
-    it 'exists' do
-      night_converter = NightConverter.new
-      expect(night_converter).to be_an_instance_of NightConverter
-    end
-  end
-
   describe 'IO' do
     before :each do
       @night_converter = NightConverter.new
