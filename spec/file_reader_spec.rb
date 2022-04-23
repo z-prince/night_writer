@@ -1,5 +1,7 @@
 require 'rspec'
 require_relative '../lib/file_reader'
+require 'simplecov'
+SimpleCov.start
 # require_relative '../lib/io'
 
 RSpec.describe FileReader do
