@@ -32,9 +32,10 @@ RSpec.describe NightConverter do
     it 'converts english to braille' do
       night_converter = NightConverter.new
       english = 'hello world'
-      printed = capture_stdout do
-        night_converter.convert(english)
-      end
+      night_converter.english_to_braille(english)
+      # printed = capture_stdout do
+      #   night_converter.english_to_braille(english)
+      # end
 
       expect(printed).to eq("●  ●  ●  ●  ●   ● ●  ●  ●  ●● \n●●  ● ●  ●   ● ●●  ● ●● ●   ● \n      ●  ●  ●   ● ●  ●  ●     \n")
     end
