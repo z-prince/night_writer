@@ -18,4 +18,9 @@ RSpec.describe NightMother do
       expect(night_mother.in_file_path).to be_an_instance_of(File)
     end
   end
+
+  describe 'behaviors' do
+    night_mother = NightMother.new
+    expect(night_mother.creation_message).to eq ''
+  end
 end
