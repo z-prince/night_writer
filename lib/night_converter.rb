@@ -8,13 +8,7 @@ class NightConverter < NightMother
   include NightWriter
 
   def english_to_braille
-    conversion_arr = []
-    @in_file_path.split('').each do |letter|
-      @dictionary.each do |alpha, braille|
-        conversion_arr << braille if alpha.include?(letter)
-      end
-    end
-    conversion_arr.each do |spot|
+    format_english.each do |spot|
       @top << spot[0..1] + ' '
       @middle << spot[2..3] + ' '
       @bottom << spot[4..5] + ' '
@@ -43,5 +37,15 @@ class NightConverter < NightMother
     # binding.pry
     write(sentence)
     creation_message(sentence)
+  end
+
+  def format_english
+    conversion_arr = []
+    @in_file_path.split('').each do |letter|
+      @dictionary.each do |alpha, braille|
+        conversion_arr << braille if alpha.include?(letter)
+      end
+    end
+    conversion_arr
   end
 end

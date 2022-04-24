@@ -42,5 +42,11 @@ RSpec.describe NightConverter do
 
       expect(night_converter.english_to_braille).to eq(IO.readlines('english_test.txt'))
     end
+
+    it 'formats english' do
+      night_converter = NightConverter.new
+      ARGV = ['message.txt']
+      expect(night_converter.format_english).to eq ''
+    end
   end
 end
