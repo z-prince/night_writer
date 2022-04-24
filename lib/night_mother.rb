@@ -4,7 +4,6 @@ class NightMother
 
   def initialize
     @in_file_path = File.open(ARGV[0], 'r').read
-    # @out_file_path = File.open(ARGV[1], 'w')
     @dictionary = {
       'a' => '●.....',
       'b' => '●.●...',
@@ -35,9 +34,6 @@ class NightMother
       ' ' => '......'
     }
 
-    # @line1 = IO.readlines(ARGV[0])[0].split
-    # @line2 = IO.readlines(ARGV[0])[1].split
-    # @line3 = IO.readlines(ARGV[0])[2].split
     @top = ''
     @middle = ''
     @bottom = ''
@@ -45,10 +41,10 @@ class NightMother
 
   def creation_message(sentence_old, sentence_new)
     if sentence_new.include?('●')
-      puts "Created '#{ARGV[1]}' containing #{sentence_old.strip.count @dictionary.keys.to_s} braille characters."
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.delete(' ').count @dictionary.keys.to_s} braille characters."
 
     else
-      puts "Created '#{ARGV[1]}' containing #{sentence_old.strip.count @dictionary.keys.to_s} english characters."
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.delete(' ').count @dictionary.keys.to_s} english characters."
     end
   end
 

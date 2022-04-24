@@ -15,7 +15,6 @@ class NightConverter < NightMother
     end
     braille = "#{@top}\n#{@middle}\n#{@bottom}"
     write(braille)
-    # creation_message(@in_file_path)
     creation_message(@in_file_path, braille)
   end
 
@@ -24,7 +23,6 @@ class NightConverter < NightMother
     line1 = IO.readlines(ARGV[0])[0].split
     line2 = IO.readlines(ARGV[0])[1].split
     line3 = IO.readlines(ARGV[0])[2].split
-
     until line1 == []
       letter_str = ''
       letter_str << line1.shift
