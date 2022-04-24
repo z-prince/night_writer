@@ -34,5 +34,9 @@ class NightMother
       'z' => '●..●●●',
       ' ' => '......'
     }
+
+    @line1 = IO.readlines(ARGV[0])[0].split
+    @line2 = IO.readlines(ARGV[0])[1].split
+    @line3 = IO.readlines(ARGV[0])[2].split
   end
 end

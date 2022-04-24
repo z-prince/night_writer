@@ -1,6 +1,7 @@
 module NightWriter
-  # def write(new_file)
-  #   @out_file_path.write(new_file)
-  #   @out_file_path.close
-  # end
+  def write(info)
+    output = File.open(ARGV[1], 'w')
+    output.write(info)
+    output.close
+  end
 end
