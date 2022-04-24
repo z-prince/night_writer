@@ -31,13 +31,13 @@ RSpec.describe NightConverter do
   describe 'english to braille' do
     it 'converts english to braille' do
       night_converter = NightConverter.new
-      english = 'hello world'
-      night_converter.english_to_braille(english)
+      ARGV = ['message.txt', 'test.txt']
+      # night_converter.english_to_braille
       # printed = capture_stdout do
       #   night_converter.english_to_braille(english)
       # end
 
-      expect(printed).to eq("●  ●  ●  ●  ●   ● ●  ●  ●  ●● \n●●  ● ●  ●   ● ●●  ● ●● ●   ● \n      ●  ●  ●   ● ●  ●  ●     \n")
+      expect(night_converter.english_to_braille).to eq(IO.readlines('test.txt'))
     end
   end
 end
