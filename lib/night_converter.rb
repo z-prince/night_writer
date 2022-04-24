@@ -15,7 +15,8 @@ class NightConverter < NightMother
     end
     braille = "#{@top}\n#{@middle}\n#{@bottom}"
     write(braille)
-    creation_message(braille)
+    # creation_message(@in_file_path)
+    creation_message(@in_file_path, braille)
   end
 
   def braille_to_english
@@ -34,9 +35,8 @@ class NightConverter < NightMother
       end.keys[0]
       sentence << letter
     end
-    # binding.pry
     write(sentence)
-    creation_message(sentence)
+    creation_message(sentence, sentence)
   end
 
   def format_english

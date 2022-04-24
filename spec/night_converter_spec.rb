@@ -46,7 +46,27 @@ RSpec.describe NightConverter do
     it 'formats english' do
       night_converter = NightConverter.new
       ARGV = ['message.txt']
-      expect(night_converter.format_english).to eq ''
+      expect(night_converter.format_english).to eq ['●.●●..',
+                                                    '●..●..',
+                                                    '●.●.●.',
+                                                    '●.●.●.',
+                                                    '●..●●.',
+                                                    '......',
+                                                    '●●..●.',
+                                                    '●●.●●●',
+                                                    '......',
+                                                    '●●.●●.',
+                                                    '●.....',
+                                                    '●●..●.',
+                                                    '●..●..',
+                                                    '......',
+                                                    '.●●...',
+                                                    '.●●.●.',
+                                                    '......',
+                                                    '.●●.●.',
+                                                    '.●●●.●',
+                                                    '●.....',
+                                                    '●●.●●.']
     end
   end
 end

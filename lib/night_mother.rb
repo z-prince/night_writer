@@ -43,12 +43,12 @@ class NightMother
     @bottom = ''
   end
 
-  def creation_message(sentence)
-    if sentence.include?('●')
-      puts "Created '#{ARGV[1]}' containing #{sentence.count '●'} braille characters."
+  def creation_message(sentence_old, sentence_new)
+    if sentence_new.include?('●')
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.strip.count @dictionary.keys.to_s} braille characters."
 
     else
-      puts "Created '#{ARGV[1]}' containing #{sentence.count @dictionary.keys} english characters."
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.strip.count @dictionary.keys.to_s} english characters."
     end
   end
 
