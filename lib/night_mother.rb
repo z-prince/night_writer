@@ -39,4 +39,8 @@ class NightMother
     @line2 = IO.readlines(ARGV[0])[1].split
     @line3 = IO.readlines(ARGV[0])[2].split
   end
+
+  def creation_message(sentence)
+    puts "Created #{ARGV[1]} containing #{sentence.count} characters."
+  end
 end
