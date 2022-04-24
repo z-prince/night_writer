@@ -25,8 +25,21 @@ class NightConverter < NightMother
       bottom << spot[4..5] + ' '
     end
     braille = "#{top}\n#{middle}\n#{bottom}"
-    cat = File.open(ARGV[1], 'w')
-    cat.write(braille)
-    cat.close
+    write(braille)
+  end
+
+  def braille_to_english
+    sentence = ''
+    until @line1 == []
+      letter_str = ''
+      letter_str << @line1.shift
+      letter_str << @line2.shift
+      letter_str << @line3.shift
+      letter = @dictionary.select do |_alpha, braille|
+        braille == letter_str
+      end.keys[0]
+      sentence << letter
+    end
+    write(sentence)
   end
 end
