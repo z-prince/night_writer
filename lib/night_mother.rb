@@ -3,7 +3,7 @@ class NightMother
                 :out_file_path
 
   def initialize
-    @in_file_path = File.open(ARGV[0], 'r')
+    @in_file_path = File.open(ARGV[0], 'r').read
     # @out_file_path = File.open(ARGV[1], 'w')
     @dictionary = {
       'a' => '●.....',
@@ -35,12 +35,28 @@ class NightMother
       ' ' => '......'
     }
 
-    @line1 = IO.readlines(ARGV[0])[0].split
-    @line2 = IO.readlines(ARGV[0])[1].split
-    @line3 = IO.readlines(ARGV[0])[2].split
+    # @line1 = IO.readlines(ARGV[0])[0].split
+    # @line2 = IO.readlines(ARGV[0])[1].split
+    # @line3 = IO.readlines(ARGV[0])[2].split
+    @top = ''
+    @middle = ''
+    @bottom = ''
   end
 
   def creation_message(sentence)
-    puts "Created #{ARGV[1]} containing #{sentence.count} characters."
+    if sentence.include?('●')
+      puts "Created '#{ARGV[1]}' containing #{sentence.count '●'} braille characters."
+
+    else
+      puts "Created '#{ARGV[1]}' containing #{sentence.count @dictionary.keys} english characters."
+    end
+  end
+
+  def operate
+    if @in_file_path.include?('●')
+      braille_to_english
+    else
+      english_to_braille
+    end
   end
 end
