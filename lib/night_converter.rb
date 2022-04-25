@@ -47,4 +47,8 @@ class NightConverter < NightMother
     end
     conversion_arr
   end
+
+  def break_lines(string, size)
+    (0..(string.length - 1) / size).map { |i| string[i * size, size] }
+  end
 end
