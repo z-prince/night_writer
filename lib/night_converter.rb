@@ -9,10 +9,11 @@ class NightConverter < NightMother
 
   def english_to_braille
     format_english.each do |spot|
-      @top << spot[0..1] + ' '
-      @middle << spot[2..3] + ' '
-      @bottom << spot[4..5] + ' '
+      @top << spot[0..1] # + ' '
+      @middle << spot[2..3] # + ' '
+      @bottom << spot[4..5] # + ' '
     end
+    binding.pry
     braille = "#{@top}\n#{@middle}\n#{@bottom}"
     write(braille)
     creation_message(@in_file_path, braille)
