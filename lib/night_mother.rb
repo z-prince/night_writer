@@ -1,7 +1,9 @@
 # This class will be responsible for state and endgame methods
 class NightMother
   def initialize
-    @in_file_path = File.open(ARGV[0], 'r').read
+    # @in_file_path = File.open(ARGV[0], 'r').read
+    @input = ARGV[0]
+    @output = ARGV[1]
     @dictionary = {
       'a' => '●.....',
       'b' => '●.●...',
@@ -48,19 +50,31 @@ class NightMother
 
   def format_english
     conversion_arr = []
-    @in_file_path.split('').each do |letter|
+    in_file = read
+    in_file.split('').each do |letter|
       @dictionary.each do |alpha, braille|
         conversion_arr << braille if alpha.include?(letter)
       end
     end
+    # in_file.close
     conversion_arr
   end
 
   def operate
-    if @in_file_path.include?('●')
+    if read.include?('●')
       braille_to_english
     else
       english_to_braille
     end
+  end
+
+  def read
+    File.open(ARGV[0], 'r').read
+  end
+
+  def write(info)
+    output = File.open(ARGV[1], 'w')
+    output.write(info)
+    output.close
   end
 end
