@@ -1,5 +1,4 @@
 require_relative 'night_mother'
-require_relative 'night_writer'
 
 # This class is responsible for converting english to braille(vice versa)
 class NightConverter < NightMother
