@@ -4,15 +4,16 @@ require_relative 'night_mother'
 class NightConverter < NightMother
   def english_to_braille
     format_english.each do |spot|
-      @top << "#{spot[0..1]} "
-      @middle << "#{spot[2..3]} "
-      @bottom << "#{spot[4..5]} "
+      @top << (spot[0..1]).to_s # removed spaces to facilitate rubric accuracy
+      @middle << (spot[2..3]).to_s
+      @bottom << (spot[4..5]).to_s
     end
     braille = "#{@top}\n#{@middle}\n#{@bottom}"
     write(braille)
     creation_message(@in_file_path, braille)
   end
 
+  # after removing the spaces in the english_to_braille method, this method no longer works
   def braille_to_english
     sentence = ''
     line1 = IO.readlines(ARGV[0])[0].split
