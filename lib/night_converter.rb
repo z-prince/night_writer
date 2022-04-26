@@ -4,12 +4,12 @@ require 'pry'
 class NightConverter < NightMother
   def english_to_braille
     format_english.each do |spot|
-      @top << (spot[0..1]).to_s + ' ' # removed spaces to facilitate rubric accuracy
-      @middle << (spot[2..3]).to_s + ' '
-      @bottom << (spot[4..5]).to_s + ' '
+      @top << (spot[0..1]).to_s # + ' ' # removed spaces to facilitate rubric accuracy
+      @middle << (spot[2..3]).to_s # + ' '
+      @bottom << (spot[4..5]).to_s # + ' '
     end
     break_lines
-    creation_message(@in_file_path, @top)
+    creation_message(read, @top)
   end
 
   # after removing the spaces in the english_to_braille method, this method no longer works
@@ -42,11 +42,5 @@ class NightConverter < NightMother
         n.puts braille_arr[2][num]
       end
     end
-  end
-
-  def write(info)
-    output = File.open(ARGV[1], 'w')
-    output.write(info)
-    output.close
   end
 end
