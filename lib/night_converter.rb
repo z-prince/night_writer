@@ -4,51 +4,42 @@ require 'pry'
 class NightConverter < NightMother
   def english_to_braille
     format_english.each do |spot|
-      @top << (spot[0..1]).to_s # removed spaces to facilitate rubric accuracy
-      @middle << (spot[2..3]).to_s
-      @bottom << (spot[4..5]).to_s
+      @top << (spot[0..1]).to_s + ' ' # removed spaces to facilitate rubric accuracy
+      @middle << (spot[2..3]).to_s + ' '
+      @bottom << (spot[4..5]).to_s + ' '
     end
-    # binding.pry
-    # braille = "#{@top}\n#{@middle}\n#{@bottom}"
-    # write(braille)
     break_lines
     creation_message(@in_file_path, 'sentence')
   end
 
   # after removing the spaces in the english_to_braille method, this method no longer works
-  # def braille_to_english
-  #   sentence = ''
-  #   line1 = IO.readlines(ARGV[0])[0].split
-  #   line2 = IO.readlines(ARGV[0])[1].split
-  #   line3 = IO.readlines(ARGV[0])[2].split
-  #   until line1 == []
-  #     letter_str = ''
-  #     letter_str << line1.shift
-  #     letter_str << line2.shift
-  #     letter_str << line3.shift
-  #     letter = @dictionary.select do |_alpha, braille|
-  #       braille == letter_str
-  #     end.keys[0]
-  #     sentence << letter
-  #   end
-  #   write(sentence)
-  #   creation_message(sentence, sentence)
-  # end
-
-  # def break_lines(string, size)
-  #   (0..(string.length - 1) / size).map { |i| string[i * size, size] }
-  # end
-  #
-  def break_lines
-    thing = [@top, @middle, @bottom].map do |row|
-      row.scan(/.{1,80}/)
+  def braille_to_english
+    sentence = ''
+    line1 = IO.readlines(ARGV[0])[0].split
+    line2 = IO.readlines(ARGV[0])[1].split
+    line3 = IO.readlines(ARGV[0])[2].split
+    until line1 == []
+      letter_str = ''
+      letter_str << line1.shift
+      letter_str << line2.shift
+      letter_str << line3.shift
+      letter = @dictionary.select do |_alpha, braille|
+        braille == letter_str
+      end.keys[0]
+      sentence << letter
     end
-    length = Array(0..thing[0].length)
+    write(sentence)
+    creation_message(sentence, sentence)
+  end
+
+  def break_lines
+    braille_arr = [@top, @middle, @bottom].map { |row| row.scan(/.{1,80}/) }
+    length = Array(0..braille_arr[0].length)
     length.each do |num|
-      File.open(ARGV[1], 'a') do |f|
-        f.puts thing[0][num]
-        f.puts thing[1][num]
-        f.puts thing[2][num]
+      File.open(ARGV[1], 'a') do |n|
+        n.puts braille_arr[0][num]
+        n.puts braille_arr[1][num]
+        n.puts braille_arr[2][num]
       end
     end
   end
