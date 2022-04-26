@@ -9,7 +9,7 @@ class NightConverter < NightMother
       @bottom << (spot[4..5]).to_s + ' '
     end
     break_lines
-    creation_message(@in_file_path, 'sentence')
+    creation_message(@in_file_path, @top)
   end
 
   # after removing the spaces in the english_to_braille method, this method no longer works
