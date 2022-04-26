@@ -3,8 +3,6 @@ require 'pry'
 require_relative 'night_writer'
 
 class NightConverter < NightMother
-  include NightWriter
-
   def english_to_braille
     format_english.each do |spot|
       @top << "#{spot[0..1]} "
@@ -38,5 +36,11 @@ class NightConverter < NightMother
 
   def break_lines(string, size)
     (0..(string.length - 1) / size).map { |i| string[i * size, size] }
+  end
+
+  def write(info)
+    output = File.open(ARGV[1], 'w')
+    output.write(info)
+    output.close
   end
 end
