@@ -27,7 +27,7 @@ RSpec.describe NightConverter do
     end
 
     it 'inherits NightMother class' do
-      expect(@night_converter.in_file_path).to be_an_instance_of(File)
+      expect(@night_converter.input).to eq(ARGV[0])
     end
   end
 

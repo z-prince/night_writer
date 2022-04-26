@@ -1,7 +1,6 @@
 # This class will be responsible for state and endgame methods
 class NightMother
   def initialize
-    # @in_file_path = File.open(ARGV[0], 'r').read
     @input = ARGV[0]
     @output = ARGV[1]
     @dictionary = {
@@ -56,7 +55,6 @@ class NightMother
         conversion_arr << braille if alpha.include?(letter)
       end
     end
-    # in_file.close
     conversion_arr
   end
 
