@@ -3,7 +3,6 @@ require 'pry'
 require_relative 'night_writer'
 
 class NightConverter < NightMother
-  include NightReader
   include NightWriter
 
   def english_to_braille

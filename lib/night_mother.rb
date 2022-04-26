@@ -1,6 +1,6 @@
 class NightMother
   def initialize
-    # @in_file_path = File.open(ARGV[0], 'r').read
+    @in_file_path = File.open(ARGV[0], 'r').read
     @dictionary = {
       'a' => '●.....',
       'b' => '●.●...',

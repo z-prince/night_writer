@@ -1,6 +1,8 @@
 require 'rspec'
 require 'stringio'
 require_relative '../lib/night_converter'
+require 'simplecov'
+SimpleCov.start
 
 RSpec.describe NightConverter do
   def capture_stdout(&blk)
@@ -21,6 +23,7 @@ RSpec.describe NightConverter do
   describe 'Inheritance' do
     before :each do
       @night_converter = NightConverter.new
+      ARGV.replace['../input_test.txt', 'output_test.txt']
     end
 
     it 'inherits NightMother class' do
