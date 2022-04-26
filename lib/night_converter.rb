@@ -36,16 +36,6 @@ class NightConverter < NightMother
     creation_message(sentence, sentence)
   end
 
-  def format_english
-    conversion_arr = []
-    @in_file_path.split('').each do |letter|
-      @dictionary.each do |alpha, braille|
-        conversion_arr << braille if alpha.include?(letter)
-      end
-    end
-    conversion_arr
-  end
-
   def break_lines(string, size)
     (0..(string.length - 1) / size).map { |i| string[i * size, size] }
   end

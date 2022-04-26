@@ -45,6 +45,16 @@ class NightMother
     end
   end
 
+  def format_english
+    conversion_arr = []
+    @in_file_path.split('').each do |letter|
+      @dictionary.each do |alpha, braille|
+        conversion_arr << braille if alpha.include?(letter)
+      end
+    end
+    conversion_arr
+  end
+
   def operate
     if @in_file_path.include?('●')
       braille_to_english
