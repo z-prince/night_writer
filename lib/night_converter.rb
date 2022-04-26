@@ -1,6 +1,5 @@
 require_relative 'night_mother'
 require 'pry'
-require_relative 'night_reader'
 require_relative 'night_writer'
 
 class NightConverter < NightMother
