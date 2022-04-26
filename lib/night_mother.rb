@@ -1,10 +1,7 @@
+# This class will be responsible for state and endgame methods
 class NightMother
-  attr_accessor :in_file_path,
-                :out_file_path
-
   def initialize
-    @in_file_path = File.open(ARGV[0], 'r')
-    # @out_file_path = File.open(ARGV[1], 'w')
+    @in_file_path = File.open(ARGV[0], 'r').read
     @dictionary = {
       'a' => '●.....',
       'b' => '●.●...',
@@ -35,8 +32,35 @@ class NightMother
       ' ' => '......'
     }
 
-    @line1 = IO.readlines(ARGV[0])[0].split
-    @line2 = IO.readlines(ARGV[0])[1].split
-    @line3 = IO.readlines(ARGV[0])[2].split
+    @top = ''
+    @middle = ''
+    @bottom = ''
+  end
+
+  def creation_message(sentence_old, sentence_new)
+    if sentence_new.include?('●')
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.delete(' ').count @dictionary.keys.to_s} braille characters."
+
+    else
+      puts "Created '#{ARGV[1]}' containing #{sentence_old.delete(' ').count @dictionary.keys.to_s} english characters."
+    end
+  end
+
+  def format_english
+    conversion_arr = []
+    @in_file_path.split('').each do |letter|
+      @dictionary.each do |alpha, braille|
+        conversion_arr << braille if alpha.include?(letter)
+      end
+    end
+    conversion_arr
+  end
+
+  def operate
+    if @in_file_path.include?('●')
+      braille_to_english
+    else
+      english_to_braille
+    end
   end
 end

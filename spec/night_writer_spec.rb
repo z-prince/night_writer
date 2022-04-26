@@ -1,5 +1,7 @@
 require 'rspec'
 require_relative '../lib/night_converter'
+require 'simplecov'
+SimpleCov.start
 
 RSpec.describe NightWriter do
   describe 'IO' do
