@@ -20,9 +20,8 @@ RSpec.describe NightConverter do
       expect(NightConverter).to be < NightMother
     end
   end
-
   describe 'conversion' do
-    xit 'converts english to braille' do
+    it 'converts english to braille' do
       night_converter = NightConverter.new
       ARGV.replace(['english_message.txt', 'braille_test.txt'])
       night_converter.english_to_braille
@@ -32,9 +31,9 @@ RSpec.describe NightConverter do
 
     xit 'converts braille to english' do
       night_converter = NightConverter.new
-      ARGV.replace = ['zach.txt', 'english_test.txt']
+      ARGV.replace(['braille.txt', 'english_test.txt'])
 
-      expect(night_converter.english_to_braille).to eq(IO.readlines('english_test.txt'))
+      expect(night_converter.braille_to_english).to eq(IO.readlines('english_test.txt'))
     end
 
     it 'formats english' do

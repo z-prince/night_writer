@@ -15,21 +15,27 @@ class NightConverter < NightMother
   # after removing the spaces in the english_to_braille method, this method no longer works
   def braille_to_english
     sentence = ''
-    line1 = IO.readlines(ARGV[0])[0].split
-    line2 = IO.readlines(ARGV[0])[1].split
-    line3 = IO.readlines(ARGV[0])[2].split
-    until line1 == []
+    lines = IO.readlines(ARGV[0], chomp: true)
+    # lines.each do |line|
+    until lines == []
       letter_str = ''
-      letter_str << line1.shift
-      letter_str << line2.shift
-      letter_str << line3.shift
+      letter_str << lines.shift(2).join
+      # letter_str << line.chars.shift(2).join
+      # letter_str << line.chars.shift(2).join
       letter = @dictionary.select do |_alpha, braille|
         braille == letter_str
       end.keys[0]
+      # end
       sentence << letter
     end
     write(sentence)
     creation_message(sentence, sentence)
+  end
+
+  def braille_to_english2
+    sentence = ''
+    IO.readlines(ARGV[0], chomp: true).each do |line|
+    end
   end
 
   def break_lines
