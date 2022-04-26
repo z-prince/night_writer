@@ -9,10 +9,10 @@ class NightConverter < NightMother
       @bottom << (spot[4..5]).to_s
     end
     # binding.pry
-    braille = "#{@top}\n#{@middle}\n#{@bottom}"
-    write(braille)
-    line_breaker
-    creation_message(@in_file_path, braille)
+    # braille = "#{@top}\n#{@middle}\n#{@bottom}"
+    # write(braille)
+    break_lines
+    creation_message(@in_file_path, 'sentence')
   end
 
   # after removing the spaces in the english_to_braille method, this method no longer works
@@ -35,8 +35,22 @@ class NightConverter < NightMother
   #   creation_message(sentence, sentence)
   # end
 
-  def break_lines(string, size)
-    (0..(string.length - 1) / size).map { |i| string[i * size, size] }
+  # def break_lines(string, size)
+  #   (0..(string.length - 1) / size).map { |i| string[i * size, size] }
+  # end
+  #
+  def break_lines
+    thing = [@top, @middle, @bottom].map do |row|
+      row.scan(/.{1,80}/)
+    end
+    length = Array(0..thing[0].length)
+    length.each do |num|
+      File.open(ARGV[1], 'a') do |f|
+        f.puts thing[0][num]
+        f.puts thing[1][num]
+        f.puts thing[2][num]
+      end
+    end
   end
 
   def write(info)
