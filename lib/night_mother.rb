@@ -1,3 +1,4 @@
+# This class will be responsible for state and endgame methods
 class NightMother
   def initialize
     @in_file_path = File.open(ARGV[0], 'r').read
