@@ -1,5 +1,4 @@
 require_relative 'night_mother'
-require 'pry'
 require_relative 'night_writer'
 
 class NightConverter < NightMother
@@ -9,7 +8,6 @@ class NightConverter < NightMother
       @middle << "#{spot[2..3]} "
       @bottom << "#{spot[4..5]} "
     end
-    binding.pry
     braille = "#{@top}\n#{@middle}\n#{@bottom}"
     write(braille)
     creation_message(@in_file_path, braille)
