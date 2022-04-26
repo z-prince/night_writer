@@ -1,5 +1,7 @@
 # This class will be responsible for state and endgame methods
 class NightMother
+  attr_reader :dictionary
+
   def initialize
     @input = ARGV[0]
     @output = ARGV[1]
